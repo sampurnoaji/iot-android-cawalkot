@@ -2,7 +2,7 @@ package iot.android.cawalkot.external.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import iot.android.cawalkot.MainActivity
+import iot.android.cawalkot.presentation.MainActivity
 
 @Module
 abstract class ActivityInjectionModule {

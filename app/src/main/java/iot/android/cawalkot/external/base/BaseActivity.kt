@@ -1,4 +1,4 @@
-package iot.android.cawalkot.external.abstraction
+package iot.android.cawalkot.external.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
