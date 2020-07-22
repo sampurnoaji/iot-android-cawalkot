@@ -1,5 +1,6 @@
 package iot.android.cawalkot.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -21,5 +22,16 @@ class SplashFragment : Fragment() {
         }, 1500)
 
         return inflater.inflate(R.layout.fragment_splash, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity as MainActivity).hideBottomNavigation()
+        (activity as MainActivity).hideStatusBar()
+    }
+
+    override fun onDetach() {
+        (activity as MainActivity).showStatusBar()
+        super.onDetach()
     }
 }

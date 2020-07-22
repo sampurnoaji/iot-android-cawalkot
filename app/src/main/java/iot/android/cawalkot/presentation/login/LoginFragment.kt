@@ -8,6 +8,7 @@ import iot.android.cawalkot.data.vo.HttpResult
 import iot.android.cawalkot.data.vo.LoadResult
 import iot.android.cawalkot.databinding.FragmentLoginBinding
 import iot.android.cawalkot.external.base.BaseFragment
+import iot.android.cawalkot.presentation.util.navigateTo
 import iot.android.cawalkot.presentation.util.snackBar
 
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
@@ -54,6 +55,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     }
 
     private fun onButtonLoginPressed() {
-        vm.login("username", "password")
+//        vm.login("username", "password")
+        navigateTo(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
     }
 }
