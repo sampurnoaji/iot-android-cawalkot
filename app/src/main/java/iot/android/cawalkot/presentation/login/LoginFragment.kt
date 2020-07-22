@@ -8,8 +8,10 @@ import iot.android.cawalkot.data.vo.HttpResult
 import iot.android.cawalkot.data.vo.LoadResult
 import iot.android.cawalkot.databinding.FragmentLoginBinding
 import iot.android.cawalkot.external.base.BaseFragment
+import iot.android.cawalkot.presentation.util.gone
 import iot.android.cawalkot.presentation.util.navigateTo
 import iot.android.cawalkot.presentation.util.snackBar
+import iot.android.cawalkot.presentation.util.visible
 
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
@@ -34,12 +36,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         vm.login.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is LoadResult.Loading -> {
-
+                    binding.pbLogin.visible()
+                    binding.fabLogin.isEnabled = false
                 }
                 is LoadResult.Success -> {
                     snackBar("Login success")
+                    navigateTo(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                 }
                 is LoadResult.Error -> {
+                    binding.pbLogin.gone()
+                    binding.fabLogin.isEnabled = true
+
                     when (it.cause) {
                         HttpResult.NO_CONNECTION -> noConnectionAlertBottomSheet(retryAction = { onButtonLoginPressed() })
                         HttpResult.TIMEOUT -> timeoutAlertBottomSheet(retryAction = { onButtonLoginPressed() })
@@ -55,7 +62,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     }
 
     private fun onButtonLoginPressed() {
-//        vm.login("username", "password")
-        navigateTo(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+        vm.login("username", "password")
     }
 }

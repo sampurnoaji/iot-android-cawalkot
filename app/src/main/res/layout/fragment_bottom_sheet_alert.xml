@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:layout_marginBottom="16dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         tools:text="Terjadi kesalahan yang tak terduga. Mohon hubungi customer service kami untuk bantuan lebih lanjut" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
